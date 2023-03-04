@@ -5,8 +5,6 @@ from process_text import SpacyDocument
 import streamlit as st
 from spacy import displacy
 from nltk.tokenize import sent_tokenize
-from pathlib import Path
-from PIL import Image
 
 file = 'input.txt'
 text = "This is some example text with Yangyang and Ruth " + \
@@ -18,11 +16,13 @@ def initialize_session_vars(vars):
         if key not in st.session_state:
             st.session_state[key] = val
 
+
 initialize_session_vars({
     'text' : text,
     'displayed_text' : '',
     'updated' : False,
-    'dependency_trees' : None
+    'dependency_trees' : None,
+    'pos': None
 })
 
 
@@ -36,6 +36,7 @@ def update_displayed_text():
         svg_img = displacy.render(doc, style='dep', jupyter=False, minify=True)
         dep_svgs.append(svg_img)
     st.session_state['dependency_trees'] = dep_svgs
+    st.session_state['pos'] = spacy_doc.visualize_pos()
 
 def update_text_from_file():
     if st.session_state['uploaded_file']:
@@ -72,7 +73,7 @@ with col4:
 with col5:
     st.button('fun 🎈', on_click=st.balloons)
 
-tab1, tab2 = st.tabs(['Named entities', 'Dependency parse'])
+tab1, tab2, tab3 = st.tabs(['Named entities', 'Dependency parse', 'Parts of speech'])
 
 with tab1:
     css_file_path = "./streamlit-app/static/main.css"
@@ -88,3 +89,9 @@ with tab2:
     if st.session_state['dependency_trees']:
         for im in st.session_state['dependency_trees']:
             st.markdown(im, unsafe_allow_html=True)
+
+with tab3:
+    if st.session_state['pos']:
+        st.markdown(f'<style>{styling}</style>' + \
+                    f'<div class="box"><p class="text">{st.session_state["pos"]}</p></div>',
+                    unsafe_allow_html=True)
