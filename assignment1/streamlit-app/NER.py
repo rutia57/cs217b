@@ -46,6 +46,7 @@ def update_text_from_file():
 def update_text_from_input():
     st.session_state['text'] = st.session_state['input_text']
 
+
 st.header('Named Entity Recognition')
 
 col1, col2 = st.columns([8, 6])
@@ -64,7 +65,7 @@ with col2:
                     key='uploaded_file',
                     )
 
-col3, col4, col5 = st.columns([11, 2, 2])
+col3, col4, col5 = st.columns([11, 3, 3])
 
 with col3:
     st.button('Submit', on_click=update_displayed_text)
