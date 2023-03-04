@@ -1,5 +1,7 @@
-import sys
-sys.path.append('../')
+import sys, os
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.sep.join(dir_path.split(os.path.sep)[:-1]))
 
 from process_text import SpacyDocument
 import streamlit as st
