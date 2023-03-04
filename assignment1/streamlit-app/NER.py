@@ -53,3 +53,5 @@ if st.session_state['displayed_text'].strip() != '':
     components.html(f'<style>{styling}</style>' + \
                     f'<div class="box"><p class="text">{st.session_state["displayed_text"]}</p></div>',
                 height=400)
+
+st.snow()
