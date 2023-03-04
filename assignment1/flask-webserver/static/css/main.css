@@ -16,6 +16,7 @@
     height: 150;
     width: 250;
     resize: none;
+    direction: ltr
 }
 
 .box {

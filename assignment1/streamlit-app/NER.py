@@ -9,9 +9,7 @@ from spacy import displacy
 from nltk.tokenize import sent_tokenize
 
 file = 'input.txt'
-text = "This is some example text with Yangyang and Ruth " + \
-       "and Mr. Spongebob Squarepants and a 4th person " + \
-       "in Boston on April 25th."
+text = "This is some example text with Yangyang and Ruth and Mr. Spongebob Squarepants and a 4th person in Boston on April 25th."
 
 def initialize_session_vars(vars):
     for key, val in vars.items():
