@@ -9,7 +9,7 @@ The required modules are listed in `requirements.txt`, and can be installed by r
 ### RESTful API
 To run my Flask RESTful API program, `cd` into this directory (`/assignment1/`) and run the following command: 
 ```bash
-$ python3 flask-restful-api/NER.py
+$ python flask-restful-api/NER.py
 ```
 Then, running the following `curl` in the terminal commands(from the directory where `input.txt` is stored – here, it is in this same `/assignment1/` folder) should output information about the service and the NER results, respectively:
 ```bash
@@ -20,7 +20,7 @@ $ curl -H "Content-Type: text/plain" -X POST -d@input.txt http://127.0.0.1:5000/
 ### Flask web server
 To start my Flask web server, `cd` into this directory (`/assignment1/`) and run the following command: 
 ```bash
-$ python3 flask-webserver/NER.py
+$ python flask-webserver/NER.py
 ```
 Then, go to http://127.0.0.1:5000 in a browser to access the website and use the text area to input text. Click the submit button to process the text and view the results.
 
