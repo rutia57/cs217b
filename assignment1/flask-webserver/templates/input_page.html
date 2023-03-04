@@ -3,8 +3,8 @@
 <head>
 
     <title>NER • Flask</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='wug.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="icon" href="{{ url_for('static', filename='wug.ico') }}">
     <style>
         body { background-color: linen; }
     </style>
@@ -14,7 +14,7 @@
 <body> 
     
 <form method="POST", action="\processed_text">
-    <textarea id="input_text" name="input_text"></textarea> <br>
+    <textarea class="textbox" id="input_text" name="input_text"></textarea><br>
     <button type="submit">submit</button> 
 </form>
 

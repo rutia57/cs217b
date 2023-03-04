@@ -1,14 +1,9 @@
 import sys
 sys.path.append('../')
 
-from flask import Flask, jsonify, request
-from flask_restful import Resource, Api
 from process_text import SpacyDocument
 import streamlit as st
 import streamlit.components.v1 as components
-import os
-
-# st.set_page_config(layout='wide')
 
 file = 'input.txt'
 text = "This is some example text with Yangyang and Ruth " + \

@@ -7,9 +7,39 @@
  *
  */
 
-div {
+.div {
     border: thin solid black;
     padding: 8px;
+}
+
+.textbox {
+    height: 150;
+    width: 250;
+    resize: none;
+}
+
+.box {
+    border-width:2px;
+    border-style:solid;
+    border-radius: 0.2em;
+    border-color:black;
+    top: 1em;
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    line-height: 1;
+    overflow: scroll;
+    max-height: 300px;
+    min-height: 60px;
+    background-color: lightskyblue;
+    max-width: 600px;
+}
+
+.text {
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
 markup {

@@ -14,10 +14,7 @@ def home_page():
 def input_text():
     text = request.form['input_text']
     doc = SpacyDocument(text)
-    with open('static/css/main.css') as f:
-        styling = f.read()
-    return f"<style>{styling}</style>" + \
-        doc.get_entities_with_markup()
+    return render_template('output_page.html', displayed_text = doc.get_entities_with_markup())
 
 if __name__ == '__main__':
     app.run(debug=True)
