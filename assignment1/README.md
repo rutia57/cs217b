@@ -29,4 +29,4 @@ To start my Streamlit application, `cd` into this directory (`/assignment1/`) an
 ```bash
 $ streamlit streamlit-app/NER.py
 ```
-Then, go to http://localhost:8501/ in a browser to access the application. To input text, either type it in the input text area or upload a .txt file by clicking the upload button. To process the text and view the results, click the "get entities" button. 
+Then, go to http://localhost:8501/ in a browser to access the application. To input text, either type it in the input text area or upload a .txt file by clicking the "browse files" button or dragging the file into the file upload area. To process the text and view the results, click the "submit" button. The NER results will be displayed below in the Entities tab, and other results (e.g. the dependency parses of the text) will appear in the other tabs.

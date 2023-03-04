@@ -24,6 +24,9 @@ class SpacyDocument:
             entities.append((e.start_char, e.end_char, e.label_, e.text))
         return entities
 
+    def get_doc(self):
+        return self.doc
+
     def get_entities_with_markup(self):
         entities = self.doc.ents
         starts = {e.start_char: e.label_ for e in entities}
