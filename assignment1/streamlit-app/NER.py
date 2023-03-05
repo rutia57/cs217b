@@ -5,7 +5,6 @@ sys.path.append(os.path.sep.join(dir_path.split(os.path.sep)[:-1]))
 
 from process_text import SpacyDocument
 import streamlit as st
-from spacy import displacy
 from nltk.tokenize import sent_tokenize
 
 file = 'input.txt'
@@ -25,18 +24,17 @@ initialize_session_vars({
     'pos': None
 })
 
-
-def update_displayed_text():
+def update_displayed():
     text = st.session_state['text']
     spacy_doc = SpacyDocument(text)
     st.session_state['displayed_text'] = spacy_doc.get_entities_with_markup()
     dep_svgs = []
     for sent in sent_tokenize(text):
-        doc = SpacyDocument(sent).get_doc()
-        svg_img = displacy.render(doc, style='dep', jupyter=False, minify=True)
+        doc = SpacyDocument(sent)
+        svg_img = doc.get_dep_img()
         dep_svgs.append(svg_img)
     st.session_state['dependency_trees'] = dep_svgs
-    st.session_state['pos'] = spacy_doc.visualize_pos()
+    st.session_state['pos'] = spacy_doc.get_pos_tree()
 
 def update_text_from_file():
     if st.session_state['uploaded_file']:
@@ -68,7 +66,7 @@ with col2:
 col3, col4, col5 = st.columns([11, 3, 3])
 
 with col3:
-    st.button('Submit', on_click=update_displayed_text)
+    st.button('Submit', on_click=update_displayed)
 with col4:
     st.button('snow ❄️', on_click=st.snow)
 with col5:
@@ -76,11 +74,11 @@ with col5:
 
 tab1, tab2, tab3 = st.tabs(['Named entities', 'Dependency parse', 'Parts of speech'])
 
-with tab1:
-    css_file_path = "./streamlit-app/static/main.css"
-    with open(css_file_path) as f:
-        styling = f.read()
+css_file_path = "./streamlit-app/static/main.css"
+with open(css_file_path) as f:
+    styling = f.read()
 
+with tab1:
     if st.session_state['displayed_text'].strip() != '':
         st.markdown(f'<style>{styling}</style>' + \
                     f'<div class="box"><p class="text">{st.session_state["displayed_text"]}</p></div>',
@@ -89,7 +87,7 @@ with tab1:
 with tab2:
     if st.session_state['dependency_trees']:
         for im in st.session_state['dependency_trees']:
-            st.markdown(im, unsafe_allow_html=True)
+            st.image(im, width=400, use_column_width='never')
 
 with tab3:
     if st.session_state['pos']:

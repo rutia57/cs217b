@@ -3,7 +3,7 @@ import sys, os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.sep.join(dir_path.split(os.path.sep)[:-1]))
 
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request
 from process_text import SpacyDocument
 
 app = Flask(__name__)

@@ -1,4 +1,4 @@
-import io
+import io, os
 import spacy
 from nltk.tokenize import TreebankWordTokenizer as twt
 import nltk
@@ -8,6 +8,18 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('universal_tagset') 
 
 nlp = spacy.load("en_core_web_sm")
+
+pos_tags = ["PRON", "VERB", "NOUN", "ADJ", "ADP", "ADV", "CONJ", "DET", "NUM", "PRT"]
+colors = {"PRON": "blueviolet",
+          "VERB": "lightpink",
+          "NOUN": "turquoise",
+          "ADJ" : "lime",
+          "ADP" : "khaki",
+          "ADV" : "orange",
+          "CONJ" : "cornflowerblue",
+          "DET" : "forestgreen",
+          "NUM" : "salmon",
+          "PRT" : "yellow"}
 
 class SpacyDocument:
 
@@ -41,61 +53,22 @@ class SpacyDocument:
         markup = buffer.getvalue()
         return '<markup>%s</markup>' % markup
 
-    def visualize_pos(self):
-        pos_tags = ["PRON", "VERB", "NOUN", "ADJ", "ADP",
-                    "ADV", "CONJ", "DET", "NUM", "PRT"]
-        
-        # Tokenize text and pos tag each token
+    def get_pos_tree(self):
         tokens = twt().tokenize(self.text)
         tags = nltk.pos_tag(tokens, tagset = "universal")
-
-        # Get start and end index (span) for each token
         span_generator = twt().span_tokenize(self.text)
         spans = [span for span in span_generator]
-
-        # Create dictionary with start index, end index, 
-        # pos_tag for each token
-        ents = []
+        toks = []
         for tag, span in zip(tags, spans):
             if tag[1] in pos_tags:
-                ents.append({"start" : span[0], 
+                toks.append({"start" : span[0], 
                             "end" : span[1], 
                             "label" : tag[1] })
-
-        doc = {"text" : self.text, "ents" : ents}
-
-        colors = {"PRON": "blueviolet",
-                "VERB": "lightpink",
-                "NOUN": "turquoise",
-                "ADJ" : "lime",
-                "ADP" : "khaki",
-                "ADV" : "orange",
-                "CONJ" : "cornflowerblue",
-                "DET" : "forestgreen",
-                "NUM" : "salmon",
-                "PRT" : "yellow"}
-        
+        doc = {"text" : self.text, "ents" : toks}
         options = {"ents" : pos_tags, "colors" : colors}
+        return displacy.render(doc, style = "ent", options = options, manual = True)
+
+    def get_dep_img(self):
+        svg = displacy.render(self.doc, style='dep', jupyter=False)
+        return svg
         
-        return displacy.render(doc, 
-                        style = "ent", 
-                        options = options, 
-                        manual = True,
-                    )
-
-
-if __name__ == '__main__':
-
-    example = (
-        "When Sebastian Thrun started working on self-driving cars at "
-        "Google in 2007, few people outside of the company took him "
-        "seriously. “I can tell you very senior CEOs of major American "
-        "car companies would shake my hand and turn away because I wasn’t "
-        "worth talking to,” said Thrun, in an interview with Recode earlier "
-        "this week.")
-
-    doc = SpacyDocument(example)
-    print(doc.get_tokens())
-    for entity in doc.get_entities():
-        print(entity)
-    print(doc.get_entities_with_markup())
