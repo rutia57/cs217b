@@ -11,7 +11,7 @@ To run my Flask RESTful API program, `cd` into this directory (`/assignment1/`),
 ```bash
 $ python flask-restful-api/NER.py
 ```
-Running the following `curl` in the terminal commands(from the directory where `input.txt` is stored – here, it is in this same `/assignment1/` folder) should now output information about the service and the NER results, respectively:
+Running the following `curl` commands in the terminal (from the directory where `input.txt` is stored – here, it is in this same `/assignment1/` folder) should now output information about the service and the NER results, respectively:
 ```bash
 $ curl http://127.0.0.1:5000/api
 $ curl -H "Content-Type: text/plain" -X POST -d@input.txt http://127.0.0.1:5000/api
