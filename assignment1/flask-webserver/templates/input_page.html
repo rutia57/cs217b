@@ -6,18 +6,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
     <link rel="icon" href="{{ url_for('static', filename='wug.ico') }}">
     <style>
-        body { background-color: linen; }
+        body { background-color: aqua; }
     </style>
 
 </head>
 
 <body> 
     
-<form method="POST", action="\processed_text">
-    <textarea class="textbox" id="input_text" name="input_text">This is some example text with Yangyang and Ruth and Mr. Spongebob Squarepants and a 4th person in Boston on April 25th.
-    </textarea><br>
-    <button type="submit">submit</button> 
-</form>
+    <h4>Enter the input text below, and click "submit":</h4>
+    <form method="POST", action="\processed_text">
+        <textarea class="textbox" id="input_text" name="input_text">{{displayed_text}}</textarea>
+        <br><br>
+        <button type="submit">Submit</button> 
+    </form>
 
 </body>
 

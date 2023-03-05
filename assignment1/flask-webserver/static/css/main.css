@@ -13,27 +13,38 @@
 }
 
 .textbox {
-    height: 150;
-    width: 250;
-    resize: none;
-    direction: ltr
-}
-
-.box {
+    height: 200px;
+    width: 400px;
     border-width:2px;
     border-style:solid;
     border-radius: 0.2em;
     border-color:black;
+    resize: none;
+    direction: ltr;
+    overflow: scroll;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16;
+}
+
+.box {
+    height: 200px;
+    width: 400px;
+    border-width:2px;
+    border-style:solid;
+    border-radius: 0.2em;
+    border-color:black;
+    background-color: white;
     top: 1em;
     bottom: 1em;
     left: 1em;
     right: 1em;
     line-height: 1;
     overflow: scroll;
-    max-height: 300px;
-    min-height: 60px;
-    background-color: lightskyblue;
-    max-width: 600px;
+    max-height: 400px;
 }
 
 .text {

@@ -5,17 +5,20 @@
     <title>NER • Flask</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎉</text></svg>">
+    <style>
+        body { background-color: lightgoldenrodyellow; }
+    </style>
 
 </head>
 
 <body> 
 
-
+    <h4>Here are all the entities in the text you inputted:</h4>
     <form method="POST", action="\">
         <div class="box"><p class="text">{{displayed_text|safe}}</p></div><br>
-        <button type="submit">go back</button> 
+        <textarea class="textbox" id="input" name="input" hidden="hidden">{{input|safe}}</textarea>
+        <button type="submit">Go back</button> 
     </form>
-
 
 </body>
 
