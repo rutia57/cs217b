@@ -7,7 +7,7 @@ I used Python 3.9.6, so my code is set up to work with this version.
 The required modules are listed in `requirements.txt`, and can be installed by running the command `pip install -r requirements.txt`.
 
 ### RESTful API
-To run my Flask RESTful API program, `cd` into this directory (`cs217b/assignment1/`), and if the RESTful API is still running, quit it by pressing CTRL+C (so that the port 5000 is not in use). Then, run the following command: 
+To run my Flask RESTful API program, `cd` into this directory (`cs217b/assignment1/`) and run the following command: 
 ```bash
 $ python flask-restful-api/NER.py
 ```
@@ -18,7 +18,7 @@ $ curl -H "Content-Type: text/plain" -X POST -d@input.txt http://127.0.0.1:5000/
 ```
 
 ### Flask web server
-To start my Flask web server, `cd` into this directory (`cs217b/assignment1/`) and run the following command: 
+To start my Flask web server, `cd` into this directory (`cs217b/assignment1/`) and if the RESTful API is still running, quit it by pressing CTRL+C (so that the port 5000 is not in use). Then, run the following command: 
 ```bash
 $ python flask-webserver/NER.py
 ```
