@@ -25,4 +25,4 @@ Then, to run the Docker container using this image, run the following command:
 ```bash
 $ docker run -dp 5000:5000 ner
 ```
-You can then access the webserver at http://127.0.0.1:5000.
+You can then access the Flask server at http://127.0.0.1:5000.
