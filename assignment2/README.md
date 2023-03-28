@@ -13,8 +13,8 @@ $ python3 app.py
 ```
 Then, go to http://127.0.0.1:5000 in a browser to access the website and use the text area to input text, or the file upload button to upload a .txt file. Click the submit button to process the text and view the results. On the results web page, click
 the button at the bottom to go the database/list view (showing how many times each entity has been found so far), and on 
-that page click the button at the bottom of the page to back to the NER visualization view. You can also click the rest button
-to reset the counts of all entities to 0, so that the table of entities will be empty until you submit another text input to process.
+that page click the button at the bottom of the page to back to the NER visualization view. You can also click the reset button
+to reset the counts of all entities to 0, so that the table of entities will be empty until you submit another text input.
 
 ### Docker image and container
 To create a Docker image of this Flask webserver, use the `Dockerfile`. To do this, make sure Docker is installed, and then `cd` into this directory (`cs217b/assignment2/`) and run the following command:
