@@ -1,0 +1,45 @@
+<html>
+
+<head>
+
+    <title>NER • Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📙</text></svg>">
+    <style>
+        body { background-color: lightgoldenrodyellow; }
+    </style>
+
+</head>
+
+<body> 
+
+    Here are all the entities that have been found so far, sorted by frequency in ascending order:
+    <br>
+    <table style="margin-left: 20px" class="styled-table">
+        <tr>
+            <th style="padding: 5px" class="header">Entity</th>
+            <th style="padding: 5px" class="header">Count</th>
+        </tr>
+        {% for entity in query_result %}
+        <tr>
+            <td style="padding: 5px">{{entity.entity_text}}</td>
+            <td style="border-left: 1px solid black; padding: 5px">{{entity.count}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- <button onclick="returnToNERResults()">Click here to go back to the NER results.</button> -->
+    <form method="POST", action="\markup_entities">
+        <textarea class="textbox" id="displayed" name="displayed" hidden="hidden">{{displayed_text|safe}}</textarea>
+        <textarea class="textbox" id="input_text" name="input_text" hidden="hidden">{{input|safe}}</textarea>
+        <button type="submit" id="back" name="back">Click here to go back to the NER results</button> 
+    </form>
+    <form method="POST", action="\list_entities">
+        <textarea class="textbox" id="displayed" name="displayed" hidden="hidden">{{displayed_text|safe}}</textarea>
+        <textarea class="textbox" id="input_text" name="input_text" hidden="hidden">{{input|safe}}</textarea>
+        <button type="submit" id="reset" name="reset">Reset counts</button> 
+    </form>
+    <!-- <script> function returnToNERResults() { window.history.back(); } </script> -->
+
+</body>
+
+</html>

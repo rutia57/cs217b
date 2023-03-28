@@ -1,0 +1,26 @@
+<html>
+
+<head>
+
+    <title>NER • Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="icon" href="{{ url_for('static', filename='wug.ico') }}">
+    <style>
+        body { background-color: aqua; }
+    </style>
+
+</head>
+
+<body> 
+    
+    <h4>Enter the input text below, and click "submit":</h4>
+    <form method="POST", action="\markup_entities">
+        <textarea class="textbox" id="input_text" name="input_text">{{displayed_text}}</textarea>
+        <br><br>
+        <b>Or upload a file: </b><input type="file" id="input_file" name="input_file" accept="text/plain"> <br><br>
+        <button type="submit">Submit</button> 
+    </form>
+
+</body>
+
+</html>
