@@ -55,7 +55,7 @@ def view_results():
                 db.session.add(entity)
                 db.session.commit()
         displayed_text = doc.get_entities_with_markup()
-    return render_template('markup_entities.html', displayed_text = displayed_text, input = text)
+    return render_template('markup_entities.html', displayed_text=displayed_text, input=text)
 
 @app.post("/list_entities")
 def view_list():
