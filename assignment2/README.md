@@ -9,7 +9,7 @@ The required modules are listed in `requirements.txt`, and can be installed by r
 ### Flask web server
 To start my Flask web server, `cd` into this directory (`cs217b/assignment2/`), and then run the following command: 
 ```bash
-$ python3 NER.py
+$ python3 app.py
 ```
 Then, go to http://127.0.0.1:5000 in a browser to access the website and use the text area to input text, or the file upload button to upload a .txt file. Click the submit button to process the text and view the results. On the results web page, click
 the button at the bottom to go the database/list view (showing how many times each entity has been found so far), and on 
